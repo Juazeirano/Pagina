@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Minha Empresa</title>
+  <style>
+    /* Estilos para o menu de navegação e barra fixa */
+    nav {
+      background-color: #fff;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    
+    nav ul li {
+      margin: 0 10px;
+    }
+    
+    nav ul li a {
+      display: block;
+      color: #333;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: bold;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+      background-color: #eee;
+      color: #555;
+    }
+    
+    .logo {
+      display: block;
+      padding: 10px;
+    }
+    
+    /* Estilos para o conteúdo da página */
+    body {
+      margin-top: 80px; /* Espaço para o menu fixo */
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      background-color: #f8f8f8;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Estilos para as seções */
+    section {
+      display: none; /* Oculta todas as seções */
+    }
+    
+    section.active {
+      display: block; /* Exibe a seção ativa */
+    }
+    
+    section h1 {
+      margin: 0;
+      font-size: 24px;
+      color: #333;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+    
+    section p {
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    
+    /* Estilos para a página "Clientes" */
+    .clientes-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+    
+    .cliente-logo {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Estilos para o mapa */
+    #map {
+      width: 100%;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+    
+    /* Estilos para o formulário de contato */
+    form {
+      margin-top: 20px;
+    }
+    
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    button[type="submit"] {
+      background-color: #333;
+      color: #fff;
+      padding: 10px 20px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color: #555;
+    }
+    
+    /* Estilos para o rodapé */
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #777;
+      font-size: 14px;
+      background-color: #f4f4f4;
+    }
+  </style>
+  <script>
+    function showSection(sectionId) {
+      // Obtém todas as seções e links da barra de navegação
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav ul li a');
+      
+      // Oculta todas as seções e remove a classe 'active' dos links
+      sections.forEach(section => section.classList.remove('active'));
+      navLinks.forEach(link => link.classList.remove('active'));
+      
+      // Exibe a seção selecionada e adiciona a classe 'active' ao link correspondente
+      const sectionToShow = document.getElementById(sectionId);
+      const linkToActivate = document.querySelector(`a[href="#${sectionId}"]`);
+      sectionToShow.classList.add('active');
+      linkToActivate.classList.add('active');
+    }
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="#inicio" class="logo"><img src="logo.png" alt="Logo da Minha Empresa"></a>
+    <ul>
+      <li><a href="#inicio" onclick="showSection('inicio')">Início</a></li>
+      <li><a href="#quem-somos" onclick="showSection('quem-somos')">Quem Somos</a></li>
+      <li><a href="#servicos" onclick="showSection('servicos')">Serviços</a></li>
+      <li><a href="#clientes" onclick="showSection('clientes')">Clientes</a></li>
+      <li><a href="#contato" onclick="showSection('contato')">Contato</a></li>
+    </ul>
+  </nav>
+  
+  <div class="container">
+    <section id="inicio" class="active">
+      <h1>Início</h1>
+      <img src="imagem_inicio.jpg" alt="Imagem de destaque para a seção Início">
+      <p>Bem-vindo à Minha Empresa, líder em soluções de...</p>
+    </section>
+    
+    <section id="quem-somos">
+      <h1>Quem Somos</h1>
+      <img src="imagem_quem_somos.jpg" alt="Imagem de destaque para a seção Quem Somos">
+      <p>Somos uma equipe dedicada de profissionais...</p>
+    </section>
+    
+    <section id="servicos">
+      <h1>Serviços</h1>
+      <img src="imagem_servicos.jpg" alt="Imagem de destaque para a seção Serviços">
+      <p>Oferecemos uma ampla gama de serviços de alta qualidade...</p>
+    </section>
+    
+    <section id="clientes">
+      <h1>Clientes</h1>
+      <div class="clientes-container">
+        <img class="cliente-logo" src="logo_cliente1.png" alt="Logo Cliente 1">
+        <img class="cliente-logo" src="logo_cliente2.png" alt="Logo Cliente 2">
+        <img class="cliente-logo" src="logo_cliente3.png" alt="Logo Cliente 3">
+        <img class="cliente-logo" src="logo_cliente4.png" alt="Logo Cliente 4">
+        <img class="cliente-logo" src="logo_cliente5.png" alt="Logo Cliente 5">
+        <img class="cliente-logo" src="logo_cliente6.png" alt="Logo Cliente 6">
+      </div>
+    </section>
+    
+    <section id="contato">
+      <h1>Contato</h1>
+      <p>Entre em contato conosco para mais informações...</p>
+      <div id="map"></div>
+      <form action="#" method="post">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="mensagem">Mensagem:</label>
+        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+        
+        <button type="submit">Enviar Mensagem</button>
+      </form>
+      
+      <script>
+        // Função para inicializar o mapa
+        function initMap() {
+          const location = { lat: -23.5505, lng: -46.6333 }; // Coordenadas da localização da empresa
+          const map = new google.maps.Map(document.getElementById("map"), {
+            center: location,
+            zoom: 15
+          });
+          const marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            title: "Minha Empresa"
+          });
+        }
+      </script>
+      <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    </section>
+  </div>
+  
+  <footer>
+    <p>© 2023 Minha Empresa. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
